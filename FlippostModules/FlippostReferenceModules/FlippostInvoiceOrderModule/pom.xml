@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>FlippostReferenceModules</artifactId>
+        <groupId>com.vbsoft</groupId>
+        <version>1.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>FlippostInvoiceOrderModule</artifactId>
+    <packaging>jar</packaging>
+
+    <name>FlippostInvoiceOrderModule</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.vbsoft</groupId>
+            <artifactId>FlippostInvoiceModule</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.vbsoft</groupId>
+            <artifactId>FlippostOrderModule</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
+</project>
