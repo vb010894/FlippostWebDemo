@@ -1,7 +1,8 @@
-package com.vbsoft.invoice.repository;
+package com.vbsoft.invoice.modeles;
 
-import com.vbsoft.invoice.modeles.FlippostInvoice;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface FlippostInvoiceRepository extends JpaRepository<FlippostInvoice, Long> {
 }

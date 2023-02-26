@@ -1,0 +1,6 @@
+# Project exclude paths
+/FlippostModules/FlippostReferenceModules/FlippostInvoiceOrderModule/target/
+/FlippostModules/FlippostStaticModules/FlippostInvoiceModule/target/
+/FlippostModules/FlippostStaticModules/FlippostOrderModule/target/
+/target/
+/node_modules/

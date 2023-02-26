@@ -6,6 +6,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 
@@ -21,9 +23,11 @@ public class FlippostInvoiceOrderReference {
 
     @OneToOne
     @JoinColumn(name = "order_id")
+    @Fetch(FetchMode.JOIN)
     FlippestOrder order;
 
     @OneToOne
     @JoinColumn(name = "invoice_id")
+    @Fetch(FetchMode.JOIN)
     FlippostInvoice invoice;
 }

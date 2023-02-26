@@ -1,9 +1,6 @@
 package com.vbsoft.invoice.modeles;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
@@ -12,22 +9,24 @@ import javax.persistence.*;
 @Table(name = "Invoice")
 @Getter
 @Setter
+@ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class FlippostInvoice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @ToString.Exclude
     Long id;
 
     @Column(name = "number")
     String number;
 
     @Column(name = "weight")
-    Float weight;
+    Double weight;
 
     @Column(name = "volumeWeight")
-    Float volumeWeight;
+    Double volumeWeight;
 
     @Column(name = "places")
-    Float places;
+    Integer places;
 }

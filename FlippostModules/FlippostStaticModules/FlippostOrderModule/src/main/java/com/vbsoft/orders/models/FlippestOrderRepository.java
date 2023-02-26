@@ -1,7 +1,8 @@
-package com.vbsoft.orders.repository;
+package com.vbsoft.orders.models;
 
-import com.vbsoft.orders.models.FlippestOrder;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface FlippestOrderRepository extends JpaRepository<FlippestOrder, Long> {
 }

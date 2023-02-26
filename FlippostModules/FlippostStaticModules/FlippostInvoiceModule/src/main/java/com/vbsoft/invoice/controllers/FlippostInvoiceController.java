@@ -1,5 +1,11 @@
 package com.vbsoft.invoice.controllers;
 
+import com.vaadin.flow.component.ClickEvent;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.dialog.Dialog;
+import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.data.binder.ValidationException;
 import com.vbsoft.invoice.modeles.FlippostInvoice;
 import com.vbsoft.invoice.services.FlippostInvoiceService;
 import com.vbsoft.invoice.views.FlippostInvoiceCreate;
@@ -19,14 +25,20 @@ public class FlippostInvoiceController {
         this.service = service;
     }
 
-    public void add(FlippostInvoiceCreate form) {
-        FlippostInvoice invoice = new FlippostInvoice();
-        invoice.setNumber(form.getNumber().getValue());
-        invoice.setWeight(form.getWeight().getValue().floatValue());
-        invoice.setVolumeWeight(form.getVolumeWeight().getValue().floatValue());
-        invoice.setPlaces(form.getPlaces().getValue().floatValue());
-        this.service.save(invoice);
 
+    public void cancelEvent(Dialog window) {
+        window.close();
+    }
+
+    public void saveEvent(Binder<FlippostInvoice> binder) {
+        FlippostInvoice invoice = new FlippostInvoice();
+        try {
+            binder.writeBean(invoice);
+        } catch (ValidationException e) {
+            Notification.show("Не удалось сохранить накладную. Ошибка валидации");
+            return;
+        }
+        this.service.save(invoice);
     }
 
 

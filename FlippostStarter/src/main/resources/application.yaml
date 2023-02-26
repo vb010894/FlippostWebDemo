@@ -1,16 +1,15 @@
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://localhost:5432/FlippostDemoModules
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
-    hikari:
-      schema: FlippostModules
   jpa:
     generate-ddl: true
     hibernate:
       ddl-auto: update
     database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
 server:
   port: 8045

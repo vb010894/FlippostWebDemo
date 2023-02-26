@@ -9,12 +9,14 @@ import com.vbsoft.main.controllers.FlippostInvoiceOrderReferenceController;
 import com.vbsoft.main.models.FlippostInvoiceOrderReference;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-@UIScope
+@Component
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class FlippostMainView extends VerticalLayout {
 
-    FlippostInvoiceOrderReferenceController controller = new FlippostInvoiceOrderReferenceController();
+    FlippostInvoiceOrderReferenceController controller;
     Button createOrder = new Button("Создать заказ");
     Button createInvoice = new Button("Создать накладную");
 
@@ -22,7 +24,9 @@ public class FlippostMainView extends VerticalLayout {
 
     Grid<FlippostInvoiceOrderReference> grid = new Grid<>();
 
-    public FlippostMainView() {
+    @Autowired
+    public FlippostMainView(FlippostInvoiceOrderReferenceController controller) {
+        this.controller = controller;
         createOrder.addClickListener(listener -> this.controller.showOrder(this));
         createInvoice.addClickListener(listener -> this.controller.showInvoice(this));
         this.grid.addColumn(reference -> reference.getInvoice().getNumber()).setHeader("Номер накладной");
@@ -31,6 +35,7 @@ public class FlippostMainView extends VerticalLayout {
         this.grid.addColumn(reference -> reference.getInvoice().getPlaces()).setHeader("Мест");
         this.grid.addColumn(reference -> reference.getOrder().getSenderName()).setHeader("Имя отправителя");
         this.grid.addColumn(reference -> reference.getOrder().getResiverName()).setHeader("Имя получателя");
+        this.grid.setItems(this.controller.getTableData());
         add(tools, grid);
     }
 }
